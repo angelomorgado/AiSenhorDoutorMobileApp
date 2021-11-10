@@ -8,5 +8,19 @@
     <string name="login_register_pt">Registar</string>
     <string name="login_register_en">Register</string>
     <string name="login_password">Password</string>
+    <string name="register_title_en">Register an user</string>
+    <string name="register_title_pt">Registar um utilizador</string>
+    <string name="register_snsText_en">SNS number:</string>
+    <string name="register_snsText_pt">Nºde utente de saúde/NºSNS</string>
+    <string name="register_nameText_en">User name:</string>
+    <string name="register_nameText_pt">Nome do utilizador:</string>
+    <string name="register_emailText">Email:</string>
+    <string name="register_passwordText">Password:</string>
+    <string name="register_rePasswordText_en">Retype password:</string>
+    <string name="register_rePasswordText_pt">Reescreva a password:</string>
+    <string name="register_cancel_en">Cancel</string>
+    <string name="register_cancel_pt">Cancelar</string>
+    <string name="register_confirm_en">Confirm</string>
+    <string name="register_confirm_pt">Confirmar</string>
 
 </resources>

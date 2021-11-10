@@ -69,20 +69,30 @@ public class MainActivity extends Activity {
 
         /*confirmation.setOnClickListener(
                 oView -> {
+                    userIn = false;
                     String id = identification.getText().toString();
                     String pass = password.getText().toString();
 
                     for (Client cl : list) {
-                       try {
-                           if ((Integer.parseInt(id) == cl.getSNS() || id.equals(cl.getEmail())) && (pass.equals(cl.getPassword()))) {
-                               System.out.println("Entrou!");
-                           }
-                       }catch (Exception e){
-                           break;
-                       }
+                        System.out.println(id+" e "+cl.getEmail());
+                        //Tentar não usar try | Arranjar forma mais otimizada
+                        //try {
+                        if ((id.equals(String.valueOf(cl.getSNS())) || id.equals(cl.getEmail())) && pass.equals(cl.getPassword())) {
+                            Intent iInitialPage = new Intent(this, InitialPage.class);
+                            iInitialPage.putExtra("SNS", String.valueOf(cl.getSNS()));
+                            iInitialPage.putExtra("Password",cl.getPassword());
+                            userIn = true;
+                            startActivity(iInitialPage);
+                        }
+                        /*}catch (Exception e){
+                            System.out.println("ESTOIROU!");
+                            continue;
+                        }
                     }
-                    Toast.makeText(MainActivity.this,
-                            "Wrong credentials", Toast.LENGTH_LONG).show();
+                    if(!userIn) {
+                        Toast.makeText(MainActivity.this,
+                                "Wrong credentials", Toast.LENGTH_LONG).show();
+                    }
 
                 }
         );*/
@@ -90,25 +100,17 @@ public class MainActivity extends Activity {
 
     public void verifyLogin(View v)
     {
+        userIn = false;
         String id = identification.getText().toString();
         String pass = password.getText().toString();
 
         for (Client cl : list) {
-            System.out.println(cl.getSNS());
-            System.out.println(cl.getPassword());
-        }
-
-        for (Client cl : list) {
-            //Tentar não usar try | Arranjar forma mais otimizada
-            try {
-                if ((Integer.parseInt(id) == cl.getSNS() || id.equals(cl.getEmail())) && (pass.equals(cl.getPassword()))) {
-                    Intent iInitialPage = new Intent(this, InitialPage.class);
-                    userIn = true;
-                    startActivity(iInitialPage);
-                }
-            }catch (Exception e){
-                System.out.println("ERROU!");
-                break;
+            if ((id.equals(String.valueOf(cl.getSNS())) || id.equals(cl.getEmail())) && pass.equals(cl.getPassword())) {
+                Intent iInitialPage = new Intent(this, InitialPage.class);
+                iInitialPage.putExtra("SNS", String.valueOf(cl.getSNS()));
+                iInitialPage.putExtra("Password",cl.getPassword());
+                userIn = true;
+                startActivity(iInitialPage);
             }
         }
         if(!userIn) {
