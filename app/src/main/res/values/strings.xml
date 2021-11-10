@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AiSenhorDoutor</string>
+    <string name="login_welcome_message_pt">Bem vindo ao Ai Senhor doutor!</string>
+    <string name="login_welcome_message_en">Welcome to Ai Senhor doutor!</string>
+    <string name="login_id_hint">Num. SNS/Email</string>
+    <string name="login_confirm_en">Confirm</string>
+    <string name="login_confirm_pt">Confirmar</string>
+    <string name="login_register_pt">Registar</string>
+    <string name="login_register_en">Register</string>
+    <string name="login_password">Password</string>
+
+</resources>
