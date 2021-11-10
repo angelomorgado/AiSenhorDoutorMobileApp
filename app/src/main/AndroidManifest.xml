@@ -21,6 +21,9 @@
         <activity
             android:name=".InitialPage">
         </activity>
+        <activity
+            android:name=".RegisterUser">
+        </activity>
     </application>
 
 </manifest>

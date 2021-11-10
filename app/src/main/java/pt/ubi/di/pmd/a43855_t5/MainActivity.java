@@ -29,13 +29,14 @@ public class MainActivity extends Activity {
     DataBase db;
     List<Client> list;
 
+    Boolean userIn = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         //Irá inicializar a view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         db = DataBase.getInstance(getApplicationContext());
         list = db.myDao().getClients();
@@ -51,7 +52,7 @@ public class MainActivity extends Activity {
         h.postDelayed(new Runnable() {
             public void run() {
                 Animation animation = new TranslateAnimation(0, 0,0, -1000);
-                animation.setDuration(500);
+                animation.setDuration(800);
                 animation.setFillAfter(true);
                 cover.startAnimation(animation);
                 cover.setVisibility(View.GONE);
@@ -98,9 +99,11 @@ public class MainActivity extends Activity {
         }
 
         for (Client cl : list) {
+            //Tentar não usar try | Arranjar forma mais otimizada
             try {
                 if ((Integer.parseInt(id) == cl.getSNS() || id.equals(cl.getEmail())) && (pass.equals(cl.getPassword()))) {
                     Intent iInitialPage = new Intent(this, InitialPage.class);
+                    userIn = true;
                     startActivity(iInitialPage);
                 }
             }catch (Exception e){
@@ -108,8 +111,18 @@ public class MainActivity extends Activity {
                 break;
             }
         }
-        Toast.makeText(MainActivity.this,
-                "Wrong credentials", Toast.LENGTH_LONG).show();
+        if(!userIn) {
+            Toast.makeText(MainActivity.this,
+                    "Wrong credentials", Toast.LENGTH_LONG).show();
+        }
 
     }
+
+    public void goToRegister(View v)
+    {
+        Intent iInitialPage = new Intent(this, RegisterUser.class);
+        userIn = true;
+        startActivity(iInitialPage);
+    }
+
 }
