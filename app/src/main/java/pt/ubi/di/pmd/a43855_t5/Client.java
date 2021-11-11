@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity(tableName = "Client")
 public class Client {
     @PrimaryKey
@@ -17,6 +19,29 @@ public class Client {
 
     @ColumnInfo
     private String Password;
+
+    public Client()
+    {
+
+    }
+
+    public Client(int sns, String name, String email, String password)
+    {
+        this.SNS = sns;
+        this.Name = name;
+        this.Email = email;
+        this.Password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "SNS=" + SNS +
+                ", Name='" + Name + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Password='" + Password + '\'' +
+                '}';
+    }
 
     public int getSNS() {
         return SNS;
