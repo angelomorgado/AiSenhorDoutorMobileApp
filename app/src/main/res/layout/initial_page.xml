@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SNS"
+        android:text="@string/register_snsText_en"
         android:textAlignment="center"
         android:textSize="32sp"
         android:id="@+id/nSNS"
@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:text="@string/login_password"
         android:textAlignment="center"
         android:textSize="32sp"
         android:id="@+id/pass"

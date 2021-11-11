@@ -1,6 +1,5 @@
 package pt.ubi.di.pmd.a43855_t5;
 
-import androidx.room.Database;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,90 +40,58 @@ public class MainActivity extends Activity {
         db = DataBase.getInstance(getApplicationContext());
         list = db.myDao().getClients();
 
-        identification = (EditText) findViewById(R.id.identificationBox);
-        password = (EditText) findViewById(R.id.passwordBox);
-        confirmation = (Button) findViewById(R.id.confirm);
-        cover = (RelativeLayout) findViewById(R.id.cover);
-        title = (TextView) findViewById(R.id.welcomeText);
-        registration = (Button) findViewById(R.id.register);
+        identification = findViewById(R.id.identificationBox);
+        password = findViewById(R.id.passwordBox);
+        confirmation = findViewById(R.id.confirm);
+        cover = findViewById(R.id.cover);
+        title = findViewById(R.id.welcomeText);
+        registration = findViewById(R.id.register);
 
         Handler h =new Handler() ;
-        h.postDelayed(new Runnable() {
-            public void run() {
-                Animation animation = new TranslateAnimation(0, 0,0, -1000);
-                animation.setDuration(800);
-                animation.setFillAfter(true);
-                cover.startAnimation(animation);
-                cover.setVisibility(View.GONE);
+        h.postDelayed(() -> {
+            Animation animation = new TranslateAnimation(0, 0,0, -10000);
+            animation.setDuration(800);
+            animation.setFillAfter(true);
+            cover.startAnimation(animation);
+            cover.setVisibility(View.GONE);
 
 
-                identification.setVisibility(View.VISIBLE);
-                title.setVisibility(View.VISIBLE);
-                password.setVisibility(View.VISIBLE);
-                confirmation.setVisibility(View.VISIBLE);
-                registration.setVisibility(View.VISIBLE);
-            }
-
+            identification.setVisibility(View.VISIBLE);
+            title.setVisibility(View.VISIBLE);
+            password.setVisibility(View.VISIBLE);
+            confirmation.setVisibility(View.VISIBLE);
+            registration.setVisibility(View.VISIBLE);
         }, 2500);
 
-        /*confirmation.setOnClickListener(
+        confirmation.setOnClickListener(
                 oView -> {
                     userIn = false;
                     String id = identification.getText().toString();
                     String pass = password.getText().toString();
 
                     for (Client cl : list) {
-                        System.out.println(id+" e "+cl.getEmail());
-                        //Tentar não usar try | Arranjar forma mais otimizada
-                        //try {
                         if ((id.equals(String.valueOf(cl.getSNS())) || id.equals(cl.getEmail())) && pass.equals(cl.getPassword())) {
                             Intent iInitialPage = new Intent(this, InitialPage.class);
                             iInitialPage.putExtra("SNS", String.valueOf(cl.getSNS()));
-                            iInitialPage.putExtra("Password",cl.getPassword());
+                            iInitialPage.putExtra("Password", cl.getPassword());
                             userIn = true;
                             startActivity(iInitialPage);
                         }
-                        /*}catch (Exception e){
-                            System.out.println("ESTOIROU!");
-                            continue;
-                        }
                     }
-                    if(!userIn) {
+                    if (!userIn) {
                         Toast.makeText(MainActivity.this,
                                 "Wrong credentials", Toast.LENGTH_LONG).show();
                     }
-
                 }
-        );*/
-    }
+        );
 
-    public void verifyLogin(View v)
-    {
-        userIn = false;
-        String id = identification.getText().toString();
-        String pass = password.getText().toString();
-
-        for (Client cl : list) {
-            if ((id.equals(String.valueOf(cl.getSNS())) || id.equals(cl.getEmail())) && pass.equals(cl.getPassword())) {
-                Intent iInitialPage = new Intent(this, InitialPage.class);
-                iInitialPage.putExtra("SNS", String.valueOf(cl.getSNS()));
-                iInitialPage.putExtra("Password",cl.getPassword());
-                userIn = true;
-                startActivity(iInitialPage);
-            }
-        }
-        if(!userIn) {
-            Toast.makeText(MainActivity.this,
-                    "Wrong credentials", Toast.LENGTH_LONG).show();
-        }
-
-    }
-
-    public void goToRegister(View v)
-    {
-        Intent iInitialPage = new Intent(this, RegisterUser.class);
-        userIn = true;
-        startActivity(iInitialPage);
+        registration.setOnClickListener(
+                oView -> {
+                    Intent iInitialPage = new Intent(this, RegisterUser.class);
+                    userIn = true;
+                    startActivity(iInitialPage);
+                }
+        );
     }
 
 }

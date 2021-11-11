@@ -7,54 +7,62 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:visibility="visible"
         android:id="@+id/cover"
-        android:translationZ="90dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:translationZ="30dp"
+        android:visibility="visible">
+
+    </RelativeLayout>
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/welcomeText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login_welcome_message_en"
         android:textAlignment="center"
         android:textSize="32sp"
-        android:id="@+id/welcomeText"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/identificationBox"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.551" />
 
     <EditText
         android:id="@+id/identificationBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints="text"
         android:hint="@string/login_id_hint"
+        android:inputType="text"
+        android:minHeight="48dp"
         android:textAlignment="center"
         android:visibility="invisible"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
-        android:autofillHints="text"
-        android:inputType="text" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.231" />
 
     <EditText
         android:id="@+id/passwordBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:textAlignment="center"
         android:hint="@string/login_password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textAlignment="center"
         android:visibility="invisible"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/identificationBox"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.069" />
 
     <Button
         android:id="@+id/confirm"
@@ -62,11 +70,12 @@
         android:layout_height="wrap_content"
         android:text="@string/login_confirm_en"
         android:visibility="invisible"
-        android:onClick="verifyLogin"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordBox"/>
+        app:layout_constraintTop_toBottomOf="@+id/passwordBox"
+        app:layout_constraintVertical_bias="0.204" />
 
     <Button
         android:id="@+id/register"
@@ -74,10 +83,11 @@
         android:layout_height="wrap_content"
         android:text="@string/login_register_en"
         android:visibility="invisible"
-        android:onClick="goToRegister"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintLeft_toRightOf="@id/confirm"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordBox"/>
+        app:layout_constraintTop_toBottomOf="@+id/passwordBox"
+        app:layout_constraintVertical_bias="0.204" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
