@@ -3,17 +3,28 @@ package pt.ubi.di.pmd.a43855_t5;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class AppointmentList extends Activity {
+import java.util.List;
+
+public class AppointmentList extends Activity implements MyRecyclerViewAdapter.ItemClickListener{
 
     String id;
+    DataBase db;
+    List<Appointment> apList;
 
     ImageButton list_settings_button;
     ImageButton list_add_button;
     ImageButton list_home_button;
+
+    MyRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +34,22 @@ public class AppointmentList extends Activity {
         Intent iCameToList = getIntent();
         id = iCameToList.getStringExtra("SNS");
 
+        //Setup the database
+        db = DataBase.getInstance(getApplicationContext());
+        apList = db.myDao().getAppointmentsBySNS(Integer.parseInt(id));
+
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.list_AppointmentsList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MyRecyclerViewAdapter(this, apList);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+
+
+
+
+
+        //=================================MENU OPTIONS===================================
         //Setup the menu buttons
         list_settings_button = (ImageButton) findViewById(R.id.list_settingsButton);
         list_home_button = (ImageButton) findViewById(R.id.list_homeButton);
@@ -77,5 +104,10 @@ public class AppointmentList extends Activity {
         });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 }

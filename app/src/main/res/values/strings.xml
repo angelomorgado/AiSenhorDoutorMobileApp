@@ -38,9 +38,14 @@
     <!--List of appointments-->
     <string name="list_welcome_en">List of Appointments</string>
     <string name="list_welcome_pt">Lista de Consultas</string>
+    <string name="list_row_type"><b>Consulta</b></string>
+    <string name="list_row_doctor"><b>Dr.%1$s</b></string>
+    <string name="list_row_date">%1$d/%2$d/%3$s</string>
 
     <!--Settings-->
     <string name="settings_welcome_en">Settings</string>
     <string name="settings_welcome_pt">Definições</string>
+
+
 
 </resources>
