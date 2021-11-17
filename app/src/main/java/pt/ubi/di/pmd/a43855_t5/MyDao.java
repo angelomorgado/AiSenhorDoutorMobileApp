@@ -13,4 +13,7 @@ public interface MyDao {
 
     @Query("SELECT * FROM Client")
     public List<Client> getClients();
+
+    @Query("SELECT * FROM Client WHERE SNS = :nSNS")
+    public Client getClientBySNS(int nSNS);
 }

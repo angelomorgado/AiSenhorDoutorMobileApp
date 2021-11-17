@@ -1,6 +1,7 @@
 package pt.ubi.di.pmd.a43855_t5;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.List;
 
@@ -73,8 +76,8 @@ public class MainActivity extends Activity {
                         if ((id.equals(String.valueOf(cl.getSNS())) || id.equals(cl.getEmail())) && pass.equals(cl.getPassword())) {
                             Intent iInitialPage = new Intent(this, InitialPage.class);
                             iInitialPage.putExtra("SNS", String.valueOf(cl.getSNS()));
-                            iInitialPage.putExtra("Password", cl.getPassword());
                             userIn = true;
+                            finish();
                             startActivity(iInitialPage);
                         }
                     }
@@ -92,6 +95,31 @@ public class MainActivity extends Activity {
                     startActivity(iInitialPage);
                 }
         );
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Exit");
+        builder.setMessage("Are you sure?");
+
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                System.exit(0);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 }

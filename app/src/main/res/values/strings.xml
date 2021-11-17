@@ -1,4 +1,6 @@
 <resources>
+
+    <!---Login page-->
     <string name="app_name">AiSenhorDoutor</string>
     <string name="login_welcome_message_pt">Bem vindo ao Ai Senhor doutor!</string>
     <string name="login_welcome_message_en">Welcome to Ai Senhor doutor!</string>
@@ -8,6 +10,8 @@
     <string name="login_register_pt">Registar</string>
     <string name="login_register_en">Register</string>
     <string name="login_password">Password</string>
+
+    <!---Register page-->
     <string name="register_title_en">Register an user</string>
     <string name="register_title_pt">Registar um utilizador</string>
     <string name="register_snsText_en">SNS number:</string>
@@ -22,5 +26,10 @@
     <string name="register_cancel_pt">Cancelar</string>
     <string name="register_confirm_en">Confirm</string>
     <string name="register_confirm_pt">Confirmar</string>
+
+    <!---Home page-->
+    <string name="home_welcome_en">Welcome!</string>
+    <string name="home_welcome_pt">Seja Bem-vindo!</string>
+
 
 </resources>

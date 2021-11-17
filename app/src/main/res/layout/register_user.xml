@@ -210,18 +210,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--SNS Number -->
-
-
-    <!--Username -->
-
-
-    <!--Email -->
-
-
-    <!--Password -->
-
-    <!--Retype password -->
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
