@@ -190,7 +190,6 @@
                 android:layout_width="wrap_content"
                 android:onClick="confirmAction"
                 android:layout_height="wrap_content"
-
                 android:text="@string/register_confirm_en" />
 
             <Space

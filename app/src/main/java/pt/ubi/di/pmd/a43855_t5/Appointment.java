@@ -115,4 +115,20 @@ public class Appointment {
     public void setNotes(String notes) {
         Notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "IDappointment=" + IDappointment +
+                ", SNS=" + SNS +
+                ", Day=" + Day +
+                ", Month=" + Month +
+                ", Year=" + Year +
+                ", Hour=" + Hour +
+                ", Type='" + Type + '\'' +
+                ", MedicResponsable='" + MedicResponsable + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Notes='" + Notes + '\'' +
+                '}';
+    }
 }

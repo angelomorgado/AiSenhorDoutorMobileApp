@@ -34,6 +34,16 @@
     <!--Add appointment-->
     <string name="add_welcome_en">Add Appointment</string>
     <string name="add_welcome_pt">Adicionar Consulta</string>
+    <string name="add_contactHint_en">Email address to contact(Optional)</string>
+    <string name="add_contactHint_pt">Email para contactar (Optional)</string>
+    <string name="add_notesHint_en">Please enter any useful notes to the appointment (Optional)</string>
+    <string name="add_notesHint_pt">Por favor insira alguma nota útil (Opcional)</string>
+
+    <string-array name="Test">
+        <item>Test1</item>
+        <item>Test2</item>
+        <item>Test3</item>
+    </string-array>
 
     <!--List of appointments-->
     <string name="list_welcome_en">List of Appointments</string>

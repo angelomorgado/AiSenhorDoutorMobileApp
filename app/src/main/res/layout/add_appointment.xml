@@ -7,7 +7,7 @@
     tools:context=".AddAppointment">
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/add_welcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="21dp"
@@ -17,14 +17,172 @@
         android:textColor="#FFFFFF"
         android:textSize="32sp"
         android:background="@drawable/textview_smooth_edges"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addContent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02"
         tools:layout_editor_absoluteX="21dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:id="@+id/addContent"
+        app:layout_constraintBottom_toTopOf="@+id/add_menu"
+        app:layout_constraintTop_toBottomOf="@+id/add_welcomeText">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/typeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/Test"
+            android:minHeight="48dp"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/daySpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/Test"
+                android:minHeight="48dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/monthSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/Test"
+                android:minHeight="48dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/yearSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/Test"
+                android:minHeight="48dp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/hourSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/Test"
+            android:minHeight="48dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/contactEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="text"
+            android:hint="@string/add_contactHint_en"
+            android:inputType="textMultiLine"
+            android:maxLength="50"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/apNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="text"
+            android:maxLength="200"
+            android:hint="@string/add_notesHint_en"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_confirm_en" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_cancel_en" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <!--Menu-->
     <LinearLayout
+        android:id="@+id/add_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom|clip_vertical"
@@ -40,7 +198,8 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:src="@mipmap/home_small"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/add_addButton"
@@ -51,29 +210,32 @@
             android:src="@mipmap/add_transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/home_homeButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/add_appointmentsButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/list_small"
             android:background="@android:color/transparent"
+            android:src="@mipmap/list_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/home_addButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/add_settingsButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/settings_good"
             android:background="@android:color/transparent"
+            android:src="@mipmap/settings_good"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/home_appointmentsButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
