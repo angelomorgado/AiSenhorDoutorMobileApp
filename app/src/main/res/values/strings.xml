@@ -28,8 +28,19 @@
     <string name="register_confirm_pt">Confirmar</string>
 
     <!---Home page-->
-    <string name="home_welcome_en">Welcome!</string>
-    <string name="home_welcome_pt">Seja Bem-vindo!</string>
+    <string name="home_welcome_en">Welcome %1$s!</string>
+    <string name="home_welcome_pt">Seja Bem-vindo %1$s!</string>
 
+    <!--Add appointment-->
+    <string name="add_welcome_en">Add Appointment</string>
+    <string name="add_welcome_pt">Adicionar Consulta</string>
+
+    <!--List of appointments-->
+    <string name="list_welcome_en">List of Appointments</string>
+    <string name="list_welcome_pt">Lista de Consultas</string>
+
+    <!--Settings-->
+    <string name="settings_welcome_en">Settings</string>
+    <string name="settings_welcome_pt">Definições</string>
 
 </resources>

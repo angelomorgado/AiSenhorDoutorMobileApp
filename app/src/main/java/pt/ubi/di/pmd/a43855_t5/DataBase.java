@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Client.class}, version = 1, exportSchema = false)
+@Database(entities = {Client.class, Appointment.class}, version = 2, exportSchema = false)
 public abstract class DataBase extends RoomDatabase {
     private static DataBase instance;
 
@@ -19,6 +19,7 @@ public abstract class DataBase extends RoomDatabase {
                     .createFromAsset("database/DB.db")
                     .allowMainThreadQueries()
                     .setJournalMode(JournalMode.TRUNCATE)
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return instance;

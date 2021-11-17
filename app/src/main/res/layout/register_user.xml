@@ -59,6 +59,8 @@
                 android:inputType="text"
                 android:minHeight="48dp"
                 android:textAlignment="center"
+                android:backgroundTint="@color/white"
+                android:background="@color/white"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
             <Space

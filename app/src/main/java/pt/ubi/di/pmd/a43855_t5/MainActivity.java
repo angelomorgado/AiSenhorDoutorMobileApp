@@ -77,7 +77,6 @@ public class MainActivity extends Activity {
                             Intent iInitialPage = new Intent(this, InitialPage.class);
                             iInitialPage.putExtra("SNS", String.valueOf(cl.getSNS()));
                             userIn = true;
-                            finish();
                             startActivity(iInitialPage);
                         }
                     }
