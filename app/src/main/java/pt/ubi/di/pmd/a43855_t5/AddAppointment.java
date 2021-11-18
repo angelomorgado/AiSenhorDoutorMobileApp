@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +16,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
 import java.util.Calendar;
+import java.util.List;
 
 
 public class AddAppointment extends Activity {
@@ -38,6 +42,10 @@ public class AddAppointment extends Activity {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private int year,month,day, hour;
+    private String strDoctor, strType,strNote,strEmail;
+    private int nSNS,apID;
+
+    DataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,8 @@ public class AddAppointment extends Activity {
         setContentView(R.layout.add_appointment);
         Intent iCameToAdd = getIntent();
         id = iCameToAdd.getStringExtra("SNS");
+
+        db = DataBase.getInstance(getApplicationContext());
 
         //Initialize the components
         confirm = (Button) findViewById(R.id.confirm);
@@ -60,10 +70,13 @@ public class AddAppointment extends Activity {
         add_list_button = (ImageButton) findViewById(R.id.add_appointmentsButton);
 
 
-        //Setup the doctor name spinner + type spinner
+
+
+        //==================================Setup the doctor name spinner + type spinner=======================================================================
         //Create the types
         String[] typesList={"General consultation","COVID-19 test","Blood exam","Eye exam","Ear exam (Otoscopy)","Cardiac exam","Prostate Exam","Endoscopy"};
         String[] generalDoctors = {"Dr.Ângelo Morgado","Dr.Rita Quelhas"};
+        String[] covidDoctors = {"Dr.Rosinha","Dr.Joana Gonçalves"};
         String[] bloodDoctors = {"Dr.Rita Quelhas","Dr.Artur Canário","Dr.André Garcia"};
         String[] eyeDoctors = {"Dr.Diogo Correia","Dr.Manuel Morais"};
         String[] earDoctors = {"Dr.Gonçalo Simões","Dr.Beatriz Nave"};
@@ -71,7 +84,14 @@ public class AddAppointment extends Activity {
         String[] prostateDoctors = {"Dr.Johnny Sins","Dr.Quim Sirenes"};
         String[] endoscopyDoctors = {"Dr.Joana Morais","Dr.Ângelo Morgado"};
 
+        strType = typesList[0];
+        strDoctor = generalDoctors[0];
+
         //check the type spinner
+        ArrayAdapter<String> doctorAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_layout, generalDoctors);
+        doctorName.setAdapter(doctorAdapter);
+        doctorAdapter.notifyDataSetChanged();
+
         apType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -80,34 +100,61 @@ public class AddAppointment extends Activity {
                 switch (position)
                 {
                     case 0:
-                    case 1:
                         selectedList = generalDoctors;
+                        strDoctor = generalDoctors[0];
+                        break;
+                    case 1:
+                        selectedList = covidDoctors;
+                        strDoctor = covidDoctors[0];
                         break;
                     case 2:
                         selectedList = bloodDoctors;
+                        strDoctor = bloodDoctors[0];
                         break;
                     case 3:
                         selectedList = eyeDoctors;
+                        strDoctor = eyeDoctors[0];
                         break;
                     case 4:
                         selectedList = earDoctors;
+                        strDoctor = earDoctors[0];
                         break;
                     case 5:
                         selectedList = cardiacDoctors;
+                        strDoctor = cardiacDoctors[0];
                         break;
                     case 6:
                         selectedList = prostateDoctors;
+                        strDoctor = prostateDoctors[0];
                         break;
                     case 7:
                         selectedList = endoscopyDoctors;
+                        strDoctor = endoscopyDoctors[0];
                         break;
                     default:
                         throw new IllegalStateException("Unexpected value: " + position);
                 }
 
-                ArrayAdapter<String> doctorAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, selectedList);
-                doctorName.setAdapter(doctorAdapter);
+                ArrayAdapter<String> doctorAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_layout, selectedList);
 
+                strType = parent.getItemAtPosition(position).toString();
+                doctorName.setAdapter(doctorAdapter);
+                doctorAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
+
+        });
+
+        doctorName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                strDoctor = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -121,7 +168,7 @@ public class AddAppointment extends Activity {
 
 
 
-        //Setup the hour
+        //============================================================Setup the hour==========================================================
         hourButton.setOnClickListener(
                 oView -> showHour()
         );
@@ -135,14 +182,59 @@ public class AddAppointment extends Activity {
         );
 
 
-        //Confirmation Buttons
+        //======================================================Confirmation Buttons======================================================================================
         confirm.setOnClickListener(
                 oView -> {
+
+                    //Get the values of the appointment
                     year = datePickerDialog.getDatePicker().getYear();
                     month = datePickerDialog.getDatePicker().getMonth() + 1;
                     day = datePickerDialog.getDatePicker().getDayOfMonth();
                     hour = Integer.parseInt((String) hourButton.getText());
-                    System.out.println("Year: " + year + " | Month: " + month +" | Day: " + day + " | Hour: " + hour);
+                    strEmail = email.getText().toString();
+                    strNote = apNote.getText().toString();
+                    apID = db.myDao().getMaxAppointmentID() + 1;
+                    nSNS = Integer.parseInt(id);
+
+
+                    System.out.println("ID: "+ apID +" |nSNS: "+ nSNS +" |Year: " + year + " | Month: " + month +" | Day: " + day + " | Hour: " + hour + " | Type: " + strType + " | Doctor: " + strDoctor);
+                    System.out.println("EMAIL: " + strEmail);
+                    System.out.println("Note: " + strNote);
+
+                    //Checks if this appointment with this doctor already exists
+                    List<Appointment> checkList = db.myDao().checkAppointment(year,month,day,strDoctor, hour);
+                    Appointment a = new Appointment();
+
+                    if(checkList.isEmpty())
+                    {
+                        a.setDay(day);
+                        a.setMonth(month);
+                        a.setYear(year);
+                        a.setIDappointment(apID);
+                        a.setSNS(nSNS);
+                        a.setEmail(strEmail);
+                        a.setType(strType);
+                        a.setMedicResponsable(strDoctor);
+                        a.setNotes(strNote);
+                        a.setHour(hour);
+
+                        db.myDao().addAppointment(a);
+
+                        Toast.makeText(AddAppointment.this,
+                                "Success!", Toast.LENGTH_LONG).show();
+
+                        Intent AddToDetails = new Intent(this, AppointmentDetails.class);
+                        AddToDetails.putExtra("SNS", String.valueOf(apID));
+                        finish();
+                        this.overridePendingTransition(0, 0);
+                        startActivity(AddToDetails);
+
+                    }
+                    else{
+                        Toast.makeText(AddAppointment.this,
+                                "Appointment already exists", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
         );
 

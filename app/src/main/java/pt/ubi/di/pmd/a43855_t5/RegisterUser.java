@@ -107,10 +107,20 @@ public class RegisterUser extends Activity {
 
                     if(checkUser(list, newClient))
                     {
-                        //db.myDao().addClient(newClient);
+                        newClient.setEmail(strEmail);
+                        newClient.setName(strName);
+                        newClient.setSNS(Integer.parseInt(strSNS));
+                        newClient.setPassword(strPass);
+                        db.myDao().addClient(newClient);
                         //FALTA ADICIONAR O IS BLANK PARA O NOME
                         Toast.makeText(RegisterUser.this,
                                 "Success", Toast.LENGTH_SHORT).show();
+
+                        Intent iInitialPage = new Intent(this, InitialPage.class);
+                        iInitialPage.putExtra("SNS", strSNS);
+                        finish();
+                        this.overridePendingTransition(0, 0);
+                        startActivity(iInitialPage);
                     }
                     System.out.println(newClient.toString());
                 }

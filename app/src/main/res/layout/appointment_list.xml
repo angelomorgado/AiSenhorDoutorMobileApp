@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@mipmap/home_small"
+                android:src="@mipmap/home_transparent"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <ImageButton
@@ -73,7 +73,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@mipmap/add_small"
+                android:src="@mipmap/add_transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/home_homeButton"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -84,7 +84,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@mipmap/list_transparent"
+                android:src="@mipmap/list_small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/home_addButton"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -95,7 +95,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@mipmap/settings_good"
+                android:src="@mipmap/settings_transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/home_appointmentsButton"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -34,7 +34,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         Appointment ap = mData.get(position);
         holder.typeTextView.setText(ap.getType());
-        holder.doctorTextView.setText("Dr."+ap.getMedicResponsable());
+        holder.doctorTextView.setText(ap.getMedicResponsable());
         holder.dateTextView.setText(ap.getDay()+"/"+ap.getMonth()+"/"+ ap.getYear());
     }
 

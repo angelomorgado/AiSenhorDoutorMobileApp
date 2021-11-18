@@ -22,4 +22,16 @@ public interface MyDao {
 
     @Query("SELECT * FROM Appointment WHERE SNS = :nSNS")
     public List<Appointment> getAppointmentsBySNS(int nSNS);
+
+    @Query("SELECT * FROM Appointment WHERE IDappointment = :id")
+    public Appointment getAppointmentByID(int id);
+
+    @Query("SELECT MAX(IDappointment) FROM Appointment")
+    public int getMaxAppointmentID();
+
+    @Query("SELECT * FROM Appointment WHERE Year = :year AND Month = :month AND Day = :day AND MedicResponsable = :medic AND Hour = :hour")
+    public List<Appointment> checkAppointment(int year, int month, int day, String medic, int hour);
+
+    @Insert
+    public void addAppointment(Appointment a);
 }
