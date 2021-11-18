@@ -77,6 +77,8 @@
     <string name="appointment_type_pt">Tipo de consulta:</string>
     <string name="appointment_doctor_en">Doctor name:</string>
     <string name="appointment_doctor_pt">Nome do doutor:</string>
+    <string name="appointment_patient_en">Patient name:</string>
+    <string name="appointment_patient_pt">Nome do paciente:</string>
     <string name="appointment_date_en">Date (DD/MM/YY):</string>
     <string name="appointment_date_pt">Data (DD/MM/YY):</string>
     <string name="appointment_Hour_en">Hour (24h format):</string>
@@ -85,6 +87,10 @@
     <string name="appointment_email_pt">Email de contacto:</string>
     <string name="appointment_notes_en">Notes about the appointment:</string>
     <string name="appointment_notes_pt">Notas avulsas da consulta:</string>
+    <string name="appointment_report_button_en">Send report to contact</string>
+    <string name="appointment_report_button_pt">Mandar relatório para contacto</string>
+    <string name="appointment_cancel_button_en">Go back</string>
+    <string name="appointment_cancel_button_pt">Voltar</string>
 
 
 </resources>

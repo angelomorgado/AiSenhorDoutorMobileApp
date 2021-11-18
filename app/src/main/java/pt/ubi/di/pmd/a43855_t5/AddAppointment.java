@@ -204,6 +204,7 @@ public class AddAppointment extends Activity {
                     //Checks if this appointment with this doctor already exists
                     List<Appointment> checkList = db.myDao().checkAppointment(year,month,day,strDoctor, hour);
                     Appointment a = new Appointment();
+                    Client c = db.myDao().getClientBySNS(nSNS);
 
                     if(checkList.isEmpty())
                     {
@@ -212,10 +213,16 @@ public class AddAppointment extends Activity {
                         a.setYear(year);
                         a.setIDappointment(apID);
                         a.setSNS(nSNS);
-                        a.setEmail(strEmail);
+                        if(!strEmail.isEmpty())
+                            a.setEmail(strEmail);
+                        else
+                            a.setEmail(c.getEmail());
                         a.setType(strType);
                         a.setMedicResponsable(strDoctor);
-                        a.setNotes(strNote);
+                        if(!strNote.isEmpty())
+                            a.setNotes(strNote);
+                        else
+                            a.setNotes(" ");
                         a.setHour(hour);
 
                         db.myDao().addAppointment(a);

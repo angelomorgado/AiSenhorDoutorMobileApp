@@ -109,8 +109,10 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
     @Override
     public void onItemClick(View view, int position) {
         Appointment a = adapter.getItem(position);
-        System.out.println(a.toString());
-        //FAZER AMANHA PAGINA DE CONSULTA
-        //Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Intent ListToDetails = new Intent(this, AppointmentDetails.class);
+        ListToDetails.putExtra("SNS", String.valueOf(a.getIDappointment()));
+        finish();
+        this.overridePendingTransition(0, 0);
+        startActivity(ListToDetails);
     }
 }
