@@ -38,6 +38,23 @@
     <string name="add_contactHint_pt">Email para contactar (Optional)</string>
     <string name="add_notesHint_en">Please enter any useful notes to the appointment (Optional)</string>
     <string name="add_notesHint_pt">Por favor insira alguma nota útil (Opcional)</string>
+    <string name="add_dateTitle_en">Enter a date:</string>
+    <string name="add_dateTitle_pt">Insira a data:</string>
+    <string name="add_hourTitle_en">Enter the hour:</string>
+    <string name="add_hourTitle_pt">Insira a data:</string>
+    <string name="add_typeHint_pt">Tipo de consulta</string>
+    <string name="add_typeHint_en">Type of appointment</string>
+
+    <string-array name="apTypeList_en">
+        <item>General consultation</item>
+        <item>COVID-19 test</item>
+        <item>Blood exam</item>
+        <item>Eye exam</item>
+        <item>Ear exam (Otoscopy)</item>
+        <item>Cardiac exam</item>
+        <item>Prostate Exam</item>
+        <item>Endoscopy</item>
+    </string-array>
 
     <string-array name="Test">
         <item>Test1</item>
