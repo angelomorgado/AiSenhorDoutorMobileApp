@@ -38,12 +38,14 @@
     <string name="add_contactHint_pt">Email para contactar (Optional)</string>
     <string name="add_notesHint_en">Please enter any useful notes to the appointment (Optional)</string>
     <string name="add_notesHint_pt">Por favor insira alguma nota útil (Opcional)</string>
-    <string name="add_dateTitle_en">Enter a date:</string>
-    <string name="add_dateTitle_pt">Insira a data:</string>
-    <string name="add_hourTitle_en">Enter the hour:</string>
-    <string name="add_hourTitle_pt">Insira a data:</string>
+    <string name="add_dateTitle_en">Date:</string>
+    <string name="add_dateTitle_pt">Data:</string>
+    <string name="add_hourTitle_en">Hour:</string>
+    <string name="add_hourTitle_pt">Hora:</string>
     <string name="add_typeHint_pt">Tipo de consulta</string>
     <string name="add_typeHint_en">Type of appointment</string>
+    <string name="add_doctorHint_pt">Doutor responsável</string>
+    <string name="add_doctorHint_en">Doctor responsible</string>
 
     <string-array name="apTypeList_en">
         <item>General consultation</item>

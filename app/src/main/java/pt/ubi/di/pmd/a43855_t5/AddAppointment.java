@@ -6,6 +6,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -44,25 +47,87 @@ public class AddAppointment extends Activity {
         Intent iCameToAdd = getIntent();
         id = iCameToAdd.getStringExtra("SNS");
 
-        //Setup the components
+        //Initialize the components
         confirm = (Button) findViewById(R.id.confirm);
-        apType = (Spinner) findViewById(R.id.typeSpinner);
-        //doctorName = (Spinner) findViewById(R.id.);
+        apType = (Spinner) findViewById(R.id.add_typeSpinner);
+        doctorName = (Spinner) findViewById(R.id.add_doctorSpinner);
         email = (EditText) findViewById(R.id.contactEmail);
         apNote = (EditText) findViewById(R.id.apNotes);
+        hourButton = (Button) findViewById(R.id.hourButton);
+        dateButton = (Button) findViewById(R.id.dateButton);
+        add_settings_button = (ImageButton) findViewById(R.id.add_settingsButton);
+        add_home_button = (ImageButton) findViewById(R.id.add_homeButton);
+        add_list_button = (ImageButton) findViewById(R.id.add_appointmentsButton);
+
+
+        //Setup the doctor name spinner + type spinner
+        //Create the types
+        String[] typesList={"General consultation","COVID-19 test","Blood exam","Eye exam","Ear exam (Otoscopy)","Cardiac exam","Prostate Exam","Endoscopy"};
+        String[] generalDoctors = {"Dr.Ângelo Morgado","Dr.Rita Quelhas"};
+        String[] bloodDoctors = {"Dr.Rita Quelhas","Dr.Artur Canário","Dr.André Garcia"};
+        String[] eyeDoctors = {"Dr.Diogo Correia","Dr.Manuel Morais"};
+        String[] earDoctors = {"Dr.Gonçalo Simões","Dr.Beatriz Nave"};
+        String[] cardiacDoctors = {"Dr.Luís Sena","Dr. Inês Carrilho"};
+        String[] prostateDoctors = {"Dr.Johnny Sins","Dr.Quim Sirenes"};
+        String[] endoscopyDoctors = {"Dr.Joana Morais","Dr.Ângelo Morgado"};
+
+        //check the type spinner
+        apType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String[] selectedList;
+                switch (position)
+                {
+                    case 0:
+                    case 1:
+                        selectedList = generalDoctors;
+                        break;
+                    case 2:
+                        selectedList = bloodDoctors;
+                        break;
+                    case 3:
+                        selectedList = eyeDoctors;
+                        break;
+                    case 4:
+                        selectedList = earDoctors;
+                        break;
+                    case 5:
+                        selectedList = cardiacDoctors;
+                        break;
+                    case 6:
+                        selectedList = prostateDoctors;
+                        break;
+                    case 7:
+                        selectedList = endoscopyDoctors;
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + position);
+                }
+
+                ArrayAdapter<String> doctorAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, selectedList);
+                doctorName.setAdapter(doctorAdapter);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
+
+        });
+
+
 
 
 
         //Setup the hour
-        hourButton = (Button) findViewById(R.id.hourButton);
-
         hourButton.setOnClickListener(
                 oView -> showHour()
         );
 
         //Setup the date
         initDatePicker();
-        dateButton = (Button) findViewById(R.id.dateButton);
         dateButton.setText(getTodaysDate());
 
         dateButton.setOnClickListener(
@@ -84,10 +149,6 @@ public class AddAppointment extends Activity {
 
 
         //Setup the menu buttons
-        add_settings_button = (ImageButton) findViewById(R.id.add_settingsButton);
-        add_home_button = (ImageButton) findViewById(R.id.add_homeButton);
-        add_list_button = (ImageButton) findViewById(R.id.add_appointmentsButton);
-
         add_list_button.setOnClickListener(
                 oView -> {
                     Intent AddToList = new Intent(this, AppointmentList.class);
