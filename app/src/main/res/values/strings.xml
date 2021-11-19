@@ -1,7 +1,7 @@
 <resources>
 
     <!---Login page-->
-    <string name="app_name">AiSenhorDoutor</string>
+    <string name="app_name">Ai Senhor Doutor!</string>
     <string name="login_welcome_message_pt">Bem vindo ao Ai Senhor doutor!</string>
     <string name="login_welcome_message_en">Welcome to Ai Senhor doutor!</string>
     <string name="login_id_hint">Num. SNS/Email</string>
@@ -69,10 +69,14 @@
     <!--Settings-->
     <string name="settings_welcome_en">Settings</string>
     <string name="settings_welcome_pt">Definições</string>
+    <string name="settings_report_button_en">Send all appointments report</string>
+    <string name="settings_report_button_pt">Enviar relatório das consultas</string>
+    <string name="settings_logout_button_en">Log out</string>
+    <string name="settings_logout_button_pt">Sair</string>
 
     <!--Appointment details-->
-    <string name="appointment_welcome_en">Appointment number %1$d</string>
-    <string name="appointment_welcome_pt">Consulta número %1$d</string>
+    <string name="appointment_welcome_en">Appointment no.%1$d</string>
+    <string name="appointment_welcome_pt">Consulta nº%1$d</string>
     <string name="appointment_type_en">Type of Appointment:</string>
     <string name="appointment_type_pt">Tipo de consulta:</string>
     <string name="appointment_doctor_en">Doctor name:</string>

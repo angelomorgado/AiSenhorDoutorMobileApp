@@ -289,24 +289,11 @@ public class AddAppointment extends Activity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle("Log-out");
-        builder.setMessage("Are you sure?");
-
-        builder.setPositiveButton("YES", (dialog, which) -> {
-            // Do nothing but close the dialog
-            finish();
-            System.exit(0);
-            dialog.dismiss();
-        });
-        builder.setNegativeButton("NO", (dialog, which) -> {
-
-            // Do nothing
-            dialog.dismiss();
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
+        Intent AddToHome = new Intent(this, InitialPage.class);
+        AddToHome.putExtra("SNS", id);
+        finish();
+        this.overridePendingTransition(0, 0);
+        startActivity(AddToHome);
     }
 
     //===================Date Methods==================
