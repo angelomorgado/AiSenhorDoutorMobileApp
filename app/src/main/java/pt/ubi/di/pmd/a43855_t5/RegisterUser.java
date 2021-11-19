@@ -17,6 +17,7 @@ public class RegisterUser extends Activity {
 
     EditText sns;
     EditText name;
+    EditText surname;
     EditText email;
     EditText password;
     EditText retypePassword;
@@ -26,19 +27,42 @@ public class RegisterUser extends Activity {
     //Retorna true se o utilizador for válido e false se algumas informações forem inválidas ou o user já existir
     private Boolean checkUser(List<Client> list, Client c)
     {
+        //Verificar se não contém nenhum espaço em branco
+        if(c.getName().isEmpty()
+                || c.getName().contains(" ")
+                || c.getEmail().contains(" ")
+                || c.getEmail().isEmpty()
+                || c.getPassword().contains(" ")
+                || c.getSurname().isEmpty()
+                || c.getSurname().contains(" "))
+        {
+            Toast.makeText(RegisterUser.this,
+                    "Can't contain an empty space!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //Verify if SNS number has 9 digits
+        if(String.valueOf(c.getSNS()).length() != 9)
+        {
+            Toast.makeText(RegisterUser.this,
+                    "SNS number must have 9 digits!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //Verify if the entered mail is really a mail using regex
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if(!c.getEmail().matches(emailPattern))
+        {
+            Toast.makeText(RegisterUser.this,
+                    "Invalid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         //Verificar se a password tem mais de 7 chars
         if(c.getPassword().length() < 8)
         {
             Toast.makeText(RegisterUser.this,
-                    "Password must have more than 8 characters", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        //Verificar se não contém nenhum espaço em branco ou se está vazia
-        if(c.getName().isEmpty() || c.getEmail().contains(" ") || c.getEmail().isEmpty() || c.getPassword().contains(" "))
-        {
-            Toast.makeText(RegisterUser.this,
-                    "Invalid credentials", Toast.LENGTH_SHORT).show();
+                    "Password must have more than 8 characters!", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -47,7 +71,7 @@ public class RegisterUser extends Activity {
         {
             if(cl.getSNS() == c.getSNS() || cl.getEmail().equals(c.getEmail())) {
                 Toast.makeText(RegisterUser.this,
-                        "User already exists", Toast.LENGTH_SHORT).show();
+                        "User already exists!", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -67,6 +91,7 @@ public class RegisterUser extends Activity {
 
         sns = (EditText) findViewById(R.id.snsEdit);
         name = (EditText) findViewById(R.id.nameEdit);
+        surname = (EditText) findViewById(R.id.surnameEdit);
         email = (EditText) findViewById(R.id.emailEdit);
         password = (EditText) findViewById(R.id.passwordEdit);
         retypePassword = (EditText) findViewById(R.id.retypePasswordEdit);
@@ -84,11 +109,12 @@ public class RegisterUser extends Activity {
                         numSNS = Integer.parseInt(strSNS);
                     } catch (NumberFormatException e) {
                         Toast.makeText(RegisterUser.this,
-                                "Invalid credentials", Toast.LENGTH_SHORT).show();
+                                "SNS no. should be a number", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
                     String strName = name.getText().toString();
+                    String strSurname = surname.getText().toString();
                     String strEmail = email.getText().toString();
                     String strPass = password.getText().toString();
                     String strRePass = retypePassword.getText().toString();
@@ -103,16 +129,16 @@ public class RegisterUser extends Activity {
                     }
 
 
-                    newClient = new Client(numSNS,strName,strEmail,strPass);
+                    newClient = new Client(numSNS,strName,strEmail,strPass, strSurname);
 
                     if(checkUser(list, newClient))
                     {
                         newClient.setEmail(strEmail);
                         newClient.setName(strName);
+                        newClient.setSurname(strSurname);
                         newClient.setSNS(Integer.parseInt(strSNS));
                         newClient.setPassword(strPass);
                         db.myDao().addClient(newClient);
-                        //FALTA ADICIONAR O IS BLANK PARA O NOME
                         Toast.makeText(RegisterUser.this,
                                 "Success", Toast.LENGTH_SHORT).show();
 

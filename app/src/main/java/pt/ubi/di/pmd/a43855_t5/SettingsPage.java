@@ -7,8 +7,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+
+import java.util.List;
 
 public class SettingsPage extends Activity {
 
@@ -23,6 +26,7 @@ public class SettingsPage extends Activity {
     String id;
     DataBase db;
     Client c;
+    List<Appointment> apList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class SettingsPage extends Activity {
         id = iCameToSettings.getStringExtra("SNS");
         db = DataBase.getInstance(getApplicationContext());
         c = db.myDao().getClientBySNS(Integer.parseInt(id));
+        apList = db.myDao().getAppointmentsBySNS(c.getSNS());
 
         //Initialize the components
         settings_list_button = (ImageButton) findViewById(R.id.settings_appointmentsButton);
@@ -70,6 +75,39 @@ public class SettingsPage extends Activity {
                 }
         );
 
+        reportButton.setOnClickListener(
+                oView ->{
+                    String subject = "Clinic Ai senhor doutor! " + c.getName() + "'s report";
+                    String to = c.getEmail();
+
+                    String message = "Name : " + c.getName() + " " + c.getSurname() + "\nAppointments log:\n";
+
+                    message = message + "----------------------------------------------------------\n";
+                    for(Appointment a : apList)
+                    {
+                        message = message + a.getType() + " , " + a.getMedicResponsable() + " , " + a.getDay() + "/" + a.getMonth() + "/" + a.getYear() + " , " + a.getHour() + ":00\n\n";
+                    }
+                    message = message + "----------------------------------------------------------\n";
+                    message = message + "\nThank you for choosing Ai senhor Doutor!\n";
+
+                    System.out.println(subject);
+                    System.out.println(message);
+
+                    Toast.makeText(SettingsPage.this,
+                            "Report sent!", Toast.LENGTH_SHORT).show();
+
+                    Intent email = new Intent(Intent.ACTION_SEND);
+                    email.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
+                    email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    email.putExtra(Intent.EXTRA_TEXT, message);
+
+                    //need this to prompts email client only
+                    email.setType("message/rfc822");
+
+                    startActivity(Intent.createChooser(email, "Choose an Email client :"));
+                }
+        );
+
 
         //Setup the menu buttons
         settings_add_button.setOnClickListener(
@@ -77,7 +115,7 @@ public class SettingsPage extends Activity {
                     Intent SettingsToAdd = new Intent(this, AddAppointment.class);
                     SettingsToAdd.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
+                    this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                     startActivity(SettingsToAdd);
                 }
         );
@@ -86,7 +124,7 @@ public class SettingsPage extends Activity {
                     Intent SettingsToList = new Intent(this, AppointmentList.class);
                     SettingsToList.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
+                    this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                     startActivity(SettingsToList);
                 }
         );
@@ -95,7 +133,7 @@ public class SettingsPage extends Activity {
                     Intent SettingsToHome = new Intent(this, InitialPage.class);
                     SettingsToHome.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
+                    this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                     startActivity(SettingsToHome);
                 }
         );
@@ -106,7 +144,7 @@ public class SettingsPage extends Activity {
         Intent SettingsToHome = new Intent(this, InitialPage.class);
         SettingsToHome.putExtra("SNS", id);
         finish();
-        this.overridePendingTransition(0, 0);
+        this.overridePendingTransition(0, android.R.anim.fade_out);
         startActivity(SettingsToHome);
     }
 }

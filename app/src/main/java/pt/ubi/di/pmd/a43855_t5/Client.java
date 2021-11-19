@@ -15,6 +15,9 @@ public class Client {
     private String Name;
 
     @ColumnInfo
+    private String Surname;
+
+    @ColumnInfo
     private String Email;
 
     @ColumnInfo
@@ -25,10 +28,11 @@ public class Client {
 
     }
 
-    public Client(int sns, String name, String email, String password)
+    public Client(int sns, String name, String email, String password, String surname)
     {
         this.SNS = sns;
         this.Name = name;
+        this.Surname = surname;
         this.Email = email;
         this.Password = password;
     }
@@ -58,6 +62,10 @@ public class Client {
     public void setName(String name) {
         Name = name;
     }
+
+    public String getSurname() { return Surname; }
+
+    public void setSurname(String surname) { Surname = surname; }
 
     public String getEmail() {
         return Email;

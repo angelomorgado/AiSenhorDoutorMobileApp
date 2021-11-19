@@ -80,7 +80,7 @@ public class InitialPage extends Activity {
                         Intent HomeToAdd = new Intent(this, AddAppointment.class);
                         HomeToAdd.putExtra("SNS", id);
                         finish();
-                        this.overridePendingTransition(0, R.anim.slide_out_left);
+                        this.overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left);
                         startActivity(HomeToAdd);
                     }
             );
@@ -89,7 +89,7 @@ public class InitialPage extends Activity {
                         Intent HomeToList = new Intent(this, AppointmentList.class);
                         HomeToList.putExtra("SNS", id);
                         finish();
-                        this.overridePendingTransition(0, R.anim.slide_out_left);
+                        this.overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left);
                         startActivity(HomeToList);
                     }
             );
@@ -98,7 +98,7 @@ public class InitialPage extends Activity {
                         Intent HomeToSettings = new Intent(this, SettingsPage.class);
                         HomeToSettings.putExtra("SNS", id);
                         finish();
-                        this.overridePendingTransition(0, R.anim.slide_out_left);
+                        this.overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left);
                         startActivity(HomeToSettings);
                     }
             );

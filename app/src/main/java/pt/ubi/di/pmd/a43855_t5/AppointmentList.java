@@ -62,7 +62,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
                     Intent ListToAdd = new Intent(this, AddAppointment.class);
                     ListToAdd.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
+                    this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                     startActivity(ListToAdd);
                 }
         );
@@ -71,7 +71,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
                     Intent ListToSettings = new Intent(this, SettingsPage.class);
                     ListToSettings.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, R.anim.slide_out_left);
+                    this.overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left);
                     startActivity(ListToSettings);
                 }
         );
@@ -80,7 +80,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
                     Intent ListToHome = new Intent(this, InitialPage.class);
                     ListToHome.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
+                    this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                     startActivity(ListToHome);
                 }
         );
@@ -91,7 +91,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
         Intent ListToHome = new Intent(this, InitialPage.class);
         ListToHome.putExtra("SNS", id);
         finish();
-        this.overridePendingTransition(0, 0);
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(ListToHome);
     }
 
@@ -101,7 +101,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
         Intent ListToDetails = new Intent(this, AppointmentDetails.class);
         ListToDetails.putExtra("SNS", String.valueOf(a.getIDappointment()));
         finish();
-        this.overridePendingTransition(0, 0);
+        this.overridePendingTransition(0, android.R.anim.fade_out);
         startActivity(ListToDetails);
     }
 }

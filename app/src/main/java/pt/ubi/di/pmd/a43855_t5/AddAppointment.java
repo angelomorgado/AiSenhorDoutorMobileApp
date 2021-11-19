@@ -29,7 +29,7 @@ public class AddAppointment extends Activity {
 
     String id;
 
-    Button confirm;
+    Button confirm,cancel;
     ImageButton add_settings_button;
     ImageButton add_list_button;
     ImageButton add_home_button;
@@ -59,6 +59,7 @@ public class AddAppointment extends Activity {
 
         //Initialize the components
         confirm = (Button) findViewById(R.id.confirm);
+        cancel = (Button) findViewById(R.id.cancel);
         apType = (Spinner) findViewById(R.id.add_typeSpinner);
         doctorName = (Spinner) findViewById(R.id.add_doctorSpinner);
         email = (EditText) findViewById(R.id.contactEmail);
@@ -75,14 +76,14 @@ public class AddAppointment extends Activity {
         //==================================Setup the doctor name spinner + type spinner=======================================================================
         //Create the types
         String[] typesList={"General consultation","COVID-19 test","Blood exam","Eye exam","Ear exam (Otoscopy)","Cardiac exam","Prostate Exam","Endoscopy"};
-        String[] generalDoctors = {"Dr.Ângelo Morgado","Dr.Rita Quelhas"};
-        String[] covidDoctors = {"Dr.Rosinha","Dr.Joana Gonçalves"};
-        String[] bloodDoctors = {"Dr.Rita Quelhas","Dr.Artur Canário","Dr.André Garcia"};
-        String[] eyeDoctors = {"Dr.Diogo Correia","Dr.Manuel Morais"};
-        String[] earDoctors = {"Dr.Gonçalo Simões","Dr.Beatriz Nave"};
-        String[] cardiacDoctors = {"Dr.Luís Sena","Dr. Inês Carrilho"};
-        String[] prostateDoctors = {"Dr.Johnny Sins","Dr.Quim Sirenes"};
-        String[] endoscopyDoctors = {"Dr.Joana Morais","Dr.Ângelo Morgado"};
+        String[] generalDoctors = {"Dr. Ângelo Morgado","Dr. Rita Quelhas"};
+        String[] covidDoctors = {"Dr. Rosinha","Dr. Joana Gonçalves"};
+        String[] bloodDoctors = {"Dr. Rita Quelhas","Dr. Artur Canário","Dr. André Garcia"};
+        String[] eyeDoctors = {"Dr. Diogo Correia","Dr. Manuel Morais"};
+        String[] earDoctors = {"Dr. Gonçalo Simões","Dr. Beatriz Nave"};
+        String[] cardiacDoctors = {"Dr. Luís Sena","Dr. Inês Carrilho"};
+        String[] prostateDoctors = {"Dr. Johnny Sins","Dr. Quim Sirenes"};
+        String[] endoscopyDoctors = {"Dr. Joana Morais","Dr. Ângelo Morgado"};
 
         strType = typesList[0];
         strDoctor = generalDoctors[0];
@@ -197,16 +198,22 @@ public class AddAppointment extends Activity {
                     nSNS = Integer.parseInt(id);
 
 
-                    System.out.println("ID: "+ apID +" |nSNS: "+ nSNS +" |Year: " + year + " | Month: " + month +" | Day: " + day + " | Hour: " + hour + " | Type: " + strType + " | Doctor: " + strDoctor);
-                    System.out.println("EMAIL: " + strEmail);
-                    System.out.println("Note: " + strNote);
-
                     //Checks if this appointment with this doctor already exists
                     List<Appointment> checkList = db.myDao().checkAppointment(year,month,day,strDoctor, hour);
                     Appointment a = new Appointment();
                     Client c = db.myDao().getClientBySNS(nSNS);
 
-                    if(checkList.isEmpty())
+                    //Checks if the email is appropriate
+                    Boolean validEmail = true;
+                    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                    if(strEmail.matches(emailPattern) && !strEmail.isEmpty())
+                    {
+                        Toast.makeText(AddAppointment.this,
+                                "Invalid email", Toast.LENGTH_SHORT).show();
+                        validEmail = false;
+                    }
+
+                    if(checkList.isEmpty() && validEmail)
                     {
                         a.setDay(day);
                         a.setMonth(month);
@@ -245,6 +252,15 @@ public class AddAppointment extends Activity {
                 }
         );
 
+        cancel.setOnClickListener(
+                oView -> {
+                    Intent AddToHome = new Intent(this, InitialPage.class);
+                    AddToHome.putExtra("SNS", id);
+                    finish();
+                    this.overridePendingTransition(0, android.R.anim.fade_out);
+                    startActivity(AddToHome);
+                }
+        );
 
 
         //Setup the menu buttons
@@ -253,7 +269,7 @@ public class AddAppointment extends Activity {
                     Intent AddToList = new Intent(this, AppointmentList.class);
                     AddToList.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, R.anim.slide_out_left);
+                    this.overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left);
                     startActivity(AddToList);
                 }
         );
@@ -262,7 +278,7 @@ public class AddAppointment extends Activity {
                     Intent AddToSettings = new Intent(this, SettingsPage.class);
                     AddToSettings.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, R.anim.slide_out_left);
+                    this.overridePendingTransition(android.R.anim.fade_in, R.anim.slide_out_left);
                     startActivity(AddToSettings);
                 }
         );
@@ -271,7 +287,7 @@ public class AddAppointment extends Activity {
                     Intent AddToHome = new Intent(this, InitialPage.class);
                     AddToHome.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
+                    this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
                     startActivity(AddToHome);
                 }
         );
@@ -292,7 +308,7 @@ public class AddAppointment extends Activity {
         Intent AddToHome = new Intent(this, InitialPage.class);
         AddToHome.putExtra("SNS", id);
         finish();
-        this.overridePendingTransition(0, 0);
+        this.overridePendingTransition(0, android.R.anim.fade_out);
         startActivity(AddToHome);
     }
 

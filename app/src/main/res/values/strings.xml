@@ -16,8 +16,10 @@
     <string name="register_title_pt">Registar um utilizador</string>
     <string name="register_snsText_en">SNS number:</string>
     <string name="register_snsText_pt">Nºde utente de saúde/NºSNS</string>
-    <string name="register_nameText_en">User name:</string>
-    <string name="register_nameText_pt">Nome do utilizador:</string>
+    <string name="register_nameText_en">First name:</string>
+    <string name="register_nameText_pt">Nome próprio:</string>
+    <string name="register_surnameText_en">Last name:</string>
+    <string name="register_surnameText_pt">Apelido:</string>
     <string name="register_emailText">Email:</string>
     <string name="register_passwordText">Password:</string>
     <string name="register_rePasswordText_en">Retype password:</string>
@@ -30,10 +32,10 @@
     <!---Home page-->
     <string name="home_welcome_en">Welcome %1$s!</string>
     <string name="home_welcome_pt">Seja Bem-vindo %1$s!</string>
-    <string name="home_monthAp_en">You have <b>%1$d</b> appointments this month</string>
-    <string name="home_monthAp_pt">Você tem <b>%1$d</b> consultas este mês</string>
-    <string name="home_totalAp_en">You have <b>%1$d</b> appointments scheduled</string>
-    <string name="home_totalAp_pt">Você tem <b>%1$d</b> consultas marcadas</string>
+    <string name="home_monthAp_en">You have <b>%1$d</b> appointment(s) this month</string>
+    <string name="home_monthAp_pt">Você tem <b>%1$d</b> consulta(s) este mês</string>
+    <string name="home_totalAp_en">You have <b>%1$d</b> appointment(s) scheduled</string>
+    <string name="home_totalAp_pt">Você tem <b>%1$d</b> consulta(s) marcadas</string>
 
     <!--Add appointment-->
     <string name="add_welcome_en">Add Appointment</string>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b1dafa"
     tools:context=".SettingsPage">
 
     <TextView
@@ -49,6 +50,8 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#2d24b3"
             android:textAlignment="center"
             android:text="Username" />
 

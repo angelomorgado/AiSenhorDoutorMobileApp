@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#b1dafa"
     tools:context=".AppointmentDetails">
 
     <TextView
@@ -55,6 +56,7 @@
                 android:id="@+id/def_typeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
                 android:background="@drawable/appointment_view"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -76,6 +78,7 @@
                 android:id="@+id/def_doctorText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
                 android:background="@drawable/appointment_view"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -96,6 +99,7 @@
                 android:id="@+id/def_patientText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
                 android:background="@drawable/appointment_view"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -117,6 +121,7 @@
                 android:id="@+id/def_dateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
                 android:background="@drawable/appointment_view"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -138,6 +143,7 @@
                 android:id="@+id/def_hourText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
                 android:background="@drawable/appointment_view"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -158,6 +164,7 @@
                 android:id="@+id/def_emailText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
                 android:background="@drawable/appointment_view"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -178,6 +185,7 @@
                 android:id="@+id/def_notesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
                 android:background="@drawable/appointment_view"
                 android:textAlignment="center"
                 android:text="TextView" />
