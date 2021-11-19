@@ -195,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:minHeight="48dp"
-                    android:text="9" />
+                    android:text="8" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -213,9 +213,8 @@
                 android:id="@+id/contactEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="text"
                 android:hint="@string/add_contactHint_en"
-                android:inputType="textMultiLine"
+                android:inputType="textMultiLine|textEmailAddress"
                 android:maxLength="50"
                 android:minHeight="48dp"
                 android:textAlignment="center"

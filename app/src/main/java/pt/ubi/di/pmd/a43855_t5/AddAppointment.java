@@ -253,7 +253,7 @@ public class AddAppointment extends Activity {
                     Intent AddToList = new Intent(this, AppointmentList.class);
                     AddToList.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, R.anim.slide_out_left);
                     startActivity(AddToList);
                 }
         );
@@ -262,7 +262,7 @@ public class AddAppointment extends Activity {
                     Intent AddToSettings = new Intent(this, SettingsPage.class);
                     AddToSettings.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, R.anim.slide_out_left);
                     startActivity(AddToSettings);
                 }
         );
@@ -271,7 +271,7 @@ public class AddAppointment extends Activity {
                     Intent AddToHome = new Intent(this, InitialPage.class);
                     AddToHome.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
                     startActivity(AddToHome);
                 }
         );

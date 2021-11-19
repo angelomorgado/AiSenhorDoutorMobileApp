@@ -32,6 +32,9 @@ public interface MyDao {
     @Query("SELECT * FROM Appointment WHERE Year = :year AND Month = :month AND Day = :day AND MedicResponsable = :medic AND Hour = :hour")
     public List<Appointment> checkAppointment(int year, int month, int day, String medic, int hour);
 
+    @Query("SELECT * FROM Appointment WHERE Year = :year AND Month = :month AND SNS = :nSns")
+    public List<Appointment> getMonthAppointments(int year, int month, int nSns);
+
     @Insert
     public void addAppointment(Appointment a);
 }

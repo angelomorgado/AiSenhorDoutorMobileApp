@@ -77,7 +77,7 @@ public class SettingsPage extends Activity {
                     Intent SettingsToAdd = new Intent(this, AddAppointment.class);
                     SettingsToAdd.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
                     startActivity(SettingsToAdd);
                 }
         );
@@ -86,7 +86,7 @@ public class SettingsPage extends Activity {
                     Intent SettingsToList = new Intent(this, AppointmentList.class);
                     SettingsToList.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
                     startActivity(SettingsToList);
                 }
         );
@@ -95,7 +95,7 @@ public class SettingsPage extends Activity {
                     Intent SettingsToHome = new Intent(this, InitialPage.class);
                     SettingsToHome.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
                     startActivity(SettingsToHome);
                 }
         );

@@ -30,6 +30,10 @@
     <!---Home page-->
     <string name="home_welcome_en">Welcome %1$s!</string>
     <string name="home_welcome_pt">Seja Bem-vindo %1$s!</string>
+    <string name="home_monthAp_en">You have <b>%1$d</b> appointments this month</string>
+    <string name="home_monthAp_pt">Você tem <b>%1$d</b> consultas este mês</string>
+    <string name="home_totalAp_en">You have <b>%1$d</b> appointments scheduled</string>
+    <string name="home_totalAp_pt">Você tem <b>%1$d</b> consultas marcadas</string>
 
     <!--Add appointment-->
     <string name="add_welcome_en">Add Appointment</string>

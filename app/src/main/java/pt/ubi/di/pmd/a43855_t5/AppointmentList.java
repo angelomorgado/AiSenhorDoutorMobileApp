@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 public class AppointmentList extends Activity implements MyRecyclerViewAdapter.ItemClickListener{
@@ -37,6 +38,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
         //Setup the database
         db = DataBase.getInstance(getApplicationContext());
         apList = db.myDao().getAppointmentsBySNS(Integer.parseInt(id));
+        Collections.reverse(apList);
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.list_AppointmentsList);
@@ -60,7 +62,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
                     Intent ListToAdd = new Intent(this, AddAppointment.class);
                     ListToAdd.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
                     startActivity(ListToAdd);
                 }
         );
@@ -69,7 +71,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
                     Intent ListToSettings = new Intent(this, SettingsPage.class);
                     ListToSettings.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, R.anim.slide_out_left);
                     startActivity(ListToSettings);
                 }
         );
@@ -78,7 +80,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
                     Intent ListToHome = new Intent(this, InitialPage.class);
                     ListToHome.putExtra("SNS", id);
                     finish();
-                    this.overridePendingTransition(0, 0);
+                    this.overridePendingTransition(0, android.R.anim.slide_out_right);
                     startActivity(ListToHome);
                 }
         );
