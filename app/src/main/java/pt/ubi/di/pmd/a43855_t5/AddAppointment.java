@@ -203,6 +203,9 @@ public class AddAppointment extends Activity {
                     Appointment a = new Appointment();
                     Client c = db.myDao().getClientBySNS(nSNS);
 
+                    //Checks if it is a correct hour
+                    
+
                     //Checks if the email is appropriate
                     Boolean validEmail = true;
                     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";

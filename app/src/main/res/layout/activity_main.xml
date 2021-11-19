@@ -114,6 +114,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_confirm_en"
+                android:textColor="@color/white"
+                android:background="#375c91"
                 android:visibility="invisible" />
 
             <Space
@@ -126,6 +128,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_register_en"
+                android:textColor="@color/white"
+                android:background="#375c91"
                 android:visibility="invisible" />
 
             <Space

@@ -242,8 +242,9 @@
             <Button
                 android:id="@+id/confirm"
                 android:layout_width="wrap_content"
-                android:onClick="confirmAction"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:background="#375c91"
                 android:text="@string/register_confirm_en" />
 
             <Space
@@ -255,7 +256,8 @@
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="goBack"
+                android:textColor="@color/white"
+                android:background="#375c91"
                 android:text="@string/register_cancel_en" />
 
             <Space

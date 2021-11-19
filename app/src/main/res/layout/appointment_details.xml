@@ -197,12 +197,18 @@
                 android:layout_marginTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/white"
+                android:background="#375c91"
                 android:text="@string/appointment_report_button_en"/>
 
             <Button
                 android:id="@+id/det_cancelButton"
                 android:layout_width="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:textColor="@color/white"
+                android:background="#375c91"
                 android:layout_height="wrap_content"
                 android:text="@string/appointment_cancel_button_en"/>
 
