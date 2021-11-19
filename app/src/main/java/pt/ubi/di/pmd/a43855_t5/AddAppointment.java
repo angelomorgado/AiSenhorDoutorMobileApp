@@ -77,12 +77,12 @@ public class AddAppointment extends Activity {
         //Create the types
         String[] typesList={"General consultation","COVID-19 test","Blood exam","Eye exam","Ear exam (Otoscopy)","Cardiac exam","Prostate Exam","Endoscopy"};
         String[] generalDoctors = {"Dr. Ângelo Morgado","Dr. Rita Quelhas"};
-        String[] covidDoctors = {"Dr. Rosinha","Dr. Joana Gonçalves"};
+        String[] covidDoctors = {"Dr. Rosa Duarte","Dr. Joana Gonçalves"};
         String[] bloodDoctors = {"Dr. Rita Quelhas","Dr. Artur Canário","Dr. André Garcia"};
         String[] eyeDoctors = {"Dr. Diogo Correia","Dr. Manuel Morais"};
         String[] earDoctors = {"Dr. Gonçalo Simões","Dr. Beatriz Nave"};
         String[] cardiacDoctors = {"Dr. Luís Sena","Dr. Inês Carrilho"};
-        String[] prostateDoctors = {"Dr. Johnny Sins","Dr. Quim Sirenes"};
+        String[] prostateDoctors = {"Dr. João Pina","Dr. Francisco Sirenes"};
         String[] endoscopyDoctors = {"Dr. Joana Morais","Dr. Ângelo Morgado"};
 
         strType = typesList[0];
@@ -204,10 +204,17 @@ public class AddAppointment extends Activity {
                     Client c = db.myDao().getClientBySNS(nSNS);
 
                     //Checks if it is a correct hour
-                    
+                    Calendar cal = Calendar.getInstance();
+                    boolean validHour = true;
+                    if((cal.get(Calendar.MONTH) + 1 == month) && (cal.get(Calendar.DAY_OF_MONTH) == day) && (hour <= cal.get(Calendar.HOUR_OF_DAY)))
+                    {
+                        validHour = false;
+                        Toast.makeText(AddAppointment.this,
+                                "Invalid hour", Toast.LENGTH_SHORT).show();
+                    }
 
                     //Checks if the email is appropriate
-                    Boolean validEmail = true;
+                    boolean validEmail = true;
                     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                     if(strEmail.matches(emailPattern) && !strEmail.isEmpty())
                     {
@@ -216,7 +223,7 @@ public class AddAppointment extends Activity {
                         validEmail = false;
                     }
 
-                    if(checkList.isEmpty() && validEmail)
+                    if(checkList.isEmpty() && validEmail && validHour)
                     {
                         a.setDay(day);
                         a.setMonth(month);
