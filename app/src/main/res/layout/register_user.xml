@@ -215,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:autofillHints="text"
-                android:hint="@string/register_rePasswordText_en"
+                android:hint="@string/register_passwordText"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:textAlignment="center"

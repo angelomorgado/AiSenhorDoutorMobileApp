@@ -18,7 +18,6 @@ public class AppointmentDetails extends Activity {
     Client c;
 
     //Components
-    TextView welcomeText;
     TextView typeText;
     TextView doctorText;
     TextView patientText;
@@ -43,7 +42,6 @@ public class AppointmentDetails extends Activity {
 
 
         //Initialize the compontents
-        welcomeText = (TextView) findViewById(R.id.welcomeText);
         typeText = (TextView) findViewById(R.id.def_typeText);
         doctorText = (TextView) findViewById(R.id.def_doctorText);
         patientText = (TextView) findViewById(R.id.def_patientText);
@@ -54,9 +52,6 @@ public class AppointmentDetails extends Activity {
         reportButton = (Button) findViewById(R.id.det_reportButton);
         cancelButton = (Button) findViewById(R.id.det_cancelButton);
 
-        //Set the welcome text
-        String str = getResources().getString(R.string.appointment_welcome_en, currentAp.getIDappointment());
-        welcomeText.setText(str);
 
         //Set the components text
         typeText.setText(currentAp.getType());

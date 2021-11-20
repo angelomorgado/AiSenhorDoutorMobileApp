@@ -34,7 +34,7 @@
     <string name="home_welcome_pt">Seja Bem-vindo %1$s!</string>
     <string name="home_monthAp_en">You have <b>%1$d</b> appointment(s) this month</string>
     <string name="home_monthAp_pt">Você tem <b>%1$d</b> consulta(s) este mês</string>
-    <string name="home_totalAp_en">You have <b>%1$d</b> appointment(s) scheduled</string>
+    <string name="home_totalAp_en">You have <b>%1$d</b> scheduled appointment(s)</string>
     <string name="home_totalAp_pt">Você tem <b>%1$d</b> consulta(s) marcadas</string>
 
     <!--Add appointment-->
@@ -81,8 +81,8 @@
     <string name="settings_logout_button_pt">Sair</string>
 
     <!--Appointment details-->
-    <string name="appointment_welcome_en">Appointment no.%1$d</string>
-    <string name="appointment_welcome_pt">Consulta nº%1$d</string>
+    <string name="appointment_welcome_en">Your Appointment</string>
+    <string name="appointment_welcome_pt">Consulta</string>
     <string name="appointment_type_en">Type of Appointment:</string>
     <string name="appointment_type_pt">Tipo de consulta:</string>
     <string name="appointment_doctor_en">Doctor name:</string>
