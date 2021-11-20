@@ -104,7 +104,7 @@ public class RegisterUser extends Activity {
                     String strSNS = sns.getText().toString();
                     int numSNS;
 
-                    //Verificar se o inteiro é mesmo inteiro
+                    //Check if the number is really an int
                     try {
                         numSNS = Integer.parseInt(strSNS);
                     } catch (NumberFormatException e) {
@@ -131,6 +131,7 @@ public class RegisterUser extends Activity {
 
                     newClient = new Client(numSNS,strName,strEmail,strPass, strSurname);
 
+                    //If all the information is in the correct form
                     if(checkUser(list, newClient))
                     {
                         newClient.setEmail(strEmail);
@@ -152,6 +153,7 @@ public class RegisterUser extends Activity {
                 }
         );
 
+        //Goes back to the front page
         cancel.setOnClickListener(
                 oView -> super.finish()
         );

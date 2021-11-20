@@ -4,22 +4,16 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
 
 import java.util.Calendar;
 import java.util.List;
@@ -49,12 +43,13 @@ public class AddAppointment extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Irá inicializar a view
+        //Initialize the te view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_appointment);
         Intent iCameToAdd = getIntent();
         id = iCameToAdd.getStringExtra("SNS");
 
+        //Initialize database
         db = DataBase.getInstance(getApplicationContext());
 
         //Initialize the components
@@ -93,6 +88,7 @@ public class AddAppointment extends Activity {
         doctorName.setAdapter(doctorAdapter);
         doctorAdapter.notifyDataSetChanged();
 
+        //First spinner listener that will change the values of the second
         apType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -151,6 +147,7 @@ public class AddAppointment extends Activity {
 
         });
 
+        //Listener of the second spinner
         doctorName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -223,6 +220,7 @@ public class AddAppointment extends Activity {
                         validEmail = false;
                     }
 
+                    //Only adds the appointment if all the conditions are met
                     if(checkList.isEmpty() && validEmail && validHour)
                     {
                         a.setDay(day);
@@ -262,6 +260,7 @@ public class AddAppointment extends Activity {
                 }
         );
 
+        //Goes back to home
         cancel.setOnClickListener(
                 oView -> {
                     Intent AddToHome = new Intent(this, InitialPage.class);
@@ -304,6 +303,7 @@ public class AddAppointment extends Activity {
 
     }
 
+    //Gets today's date
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);

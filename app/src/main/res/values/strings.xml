@@ -2,55 +2,35 @@
 
     <!---Login page-->
     <string name="app_name">Ai Senhor Doutor!</string>
-    <string name="login_welcome_message_pt">Bem vindo ao Ai Senhor doutor!</string>
     <string name="login_welcome_message_en">Welcome to Ai Senhor doutor!</string>
     <string name="login_id_hint">Num. SNS/Email</string>
     <string name="login_confirm_en">Confirm</string>
-    <string name="login_confirm_pt">Confirmar</string>
-    <string name="login_register_pt">Registar</string>
     <string name="login_register_en">Register</string>
     <string name="login_password">Password</string>
 
     <!---Register page-->
     <string name="register_title_en">Register an user</string>
-    <string name="register_title_pt">Registar um utilizador</string>
     <string name="register_snsText_en">SNS number:</string>
-    <string name="register_snsText_pt">Nºde utente de saúde/NºSNS</string>
     <string name="register_nameText_en">First name:</string>
-    <string name="register_nameText_pt">Nome próprio:</string>
     <string name="register_surnameText_en">Last name:</string>
-    <string name="register_surnameText_pt">Apelido:</string>
     <string name="register_emailText">Email:</string>
     <string name="register_passwordText">Password:</string>
     <string name="register_rePasswordText_en">Retype password:</string>
-    <string name="register_rePasswordText_pt">Reescreva a password:</string>
     <string name="register_cancel_en">Cancel</string>
-    <string name="register_cancel_pt">Cancelar</string>
     <string name="register_confirm_en">Confirm</string>
-    <string name="register_confirm_pt">Confirmar</string>
 
     <!---Home page-->
     <string name="home_welcome_en">Welcome %1$s!</string>
-    <string name="home_welcome_pt">Seja Bem-vindo %1$s!</string>
     <string name="home_monthAp_en">You have <b>%1$d</b> appointment(s) this month</string>
-    <string name="home_monthAp_pt">Você tem <b>%1$d</b> consulta(s) este mês</string>
     <string name="home_totalAp_en">You have <b>%1$d</b> scheduled appointment(s)</string>
-    <string name="home_totalAp_pt">Você tem <b>%1$d</b> consulta(s) marcadas</string>
 
     <!--Add appointment-->
     <string name="add_welcome_en">Add Appointment</string>
-    <string name="add_welcome_pt">Adicionar Consulta</string>
     <string name="add_contactHint_en">Email address to contact(Optional)</string>
-    <string name="add_contactHint_pt">Email para contactar (Optional)</string>
     <string name="add_notesHint_en">Please enter any useful notes to the appointment (Optional)</string>
-    <string name="add_notesHint_pt">Por favor insira alguma nota útil (Opcional)</string>
     <string name="add_dateTitle_en">Date:</string>
-    <string name="add_dateTitle_pt">Data:</string>
     <string name="add_hourTitle_en">Hour:</string>
-    <string name="add_hourTitle_pt">Hora:</string>
-    <string name="add_typeHint_pt">Tipo de consulta</string>
     <string name="add_typeHint_en">Type of appointment</string>
-    <string name="add_doctorHint_pt">Doutor responsável</string>
     <string name="add_doctorHint_en">Doctor responsible</string>
 
     <string-array name="apTypeList_en">
@@ -67,40 +47,26 @@
 
     <!--List of appointments-->
     <string name="list_welcome_en">List of Appointments</string>
-    <string name="list_welcome_pt">Lista de Consultas</string>
     <string name="list_row_type"><b>Consulta</b></string>
     <string name="list_row_doctor"><b>%1$s</b></string>
     <string name="list_row_date">%1$d/%2$d/%3$s</string>
 
     <!--Settings-->
     <string name="settings_welcome_en">Settings</string>
-    <string name="settings_welcome_pt">Definições</string>
     <string name="settings_report_button_en">Send all appointments report</string>
-    <string name="settings_report_button_pt">Enviar relatório das consultas</string>
     <string name="settings_logout_button_en">Log out</string>
-    <string name="settings_logout_button_pt">Sair</string>
 
     <!--Appointment details-->
     <string name="appointment_welcome_en">Your Appointment</string>
-    <string name="appointment_welcome_pt">Consulta</string>
     <string name="appointment_type_en">Type of Appointment:</string>
-    <string name="appointment_type_pt">Tipo de consulta:</string>
     <string name="appointment_doctor_en">Doctor name:</string>
-    <string name="appointment_doctor_pt">Nome do doutor:</string>
     <string name="appointment_patient_en">Patient name:</string>
-    <string name="appointment_patient_pt">Nome do paciente:</string>
     <string name="appointment_date_en">Date (DD/MM/YY):</string>
-    <string name="appointment_date_pt">Data (DD/MM/YY):</string>
     <string name="appointment_Hour_en">Hour (24h format):</string>
-    <string name="appointment_Hour_pt">Hora (formato 24h):</string>
     <string name="appointment_email_en">Contact email:</string>
-    <string name="appointment_email_pt">Email de contacto:</string>
     <string name="appointment_notes_en">Notes about the appointment:</string>
-    <string name="appointment_notes_pt">Notas avulsas da consulta:</string>
     <string name="appointment_report_button_en">Send report to contact</string>
-    <string name="appointment_report_button_pt">Mandar relatório para contacto</string>
     <string name="appointment_cancel_button_en">Go back</string>
-    <string name="appointment_cancel_button_pt">Voltar</string>
 
 
 </resources>

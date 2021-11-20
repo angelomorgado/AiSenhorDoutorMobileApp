@@ -3,12 +3,9 @@ package pt.ubi.di.pmd.a43855_t5;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -95,6 +92,7 @@ public class AppointmentList extends Activity implements MyRecyclerViewAdapter.I
         startActivity(ListToHome);
     }
 
+    //If any Item of the list is clicked
     @Override
     public void onItemClick(View view, int position) {
         Appointment a = adapter.getItem(position);

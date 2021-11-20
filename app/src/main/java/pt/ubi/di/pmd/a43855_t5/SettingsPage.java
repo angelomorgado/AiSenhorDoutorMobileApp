@@ -75,6 +75,7 @@ public class SettingsPage extends Activity {
                 }
         );
 
+        //Sends the appointments log to the user using an intent
         reportButton.setOnClickListener(
                 oView ->{
                     String subject = "Clinic Ai senhor doutor! " + c.getName() + "'s report";

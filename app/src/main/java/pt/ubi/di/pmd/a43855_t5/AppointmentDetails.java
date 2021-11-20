@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
 
 public class AppointmentDetails extends Activity {
 
@@ -67,7 +64,7 @@ public class AppointmentDetails extends Activity {
 
 
         //Button listeners
-
+        //Sends the report using an intent
         reportButton.setOnClickListener(
                 oView ->{
                     String subject = "Clinic Ai senhor doutor! appointment no." + currentAp.getIDappointment() + " report";

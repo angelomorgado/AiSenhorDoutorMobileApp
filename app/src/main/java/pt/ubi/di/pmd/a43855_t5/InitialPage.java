@@ -1,6 +1,5 @@
 package pt.ubi.di.pmd.a43855_t5;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
@@ -104,6 +103,7 @@ public class InitialPage extends Activity {
             );
         }
 
+    //Returns the number of appointments left
     private int countRemainingAppointments()
     {
             int count = 0;
@@ -120,6 +120,7 @@ public class InitialPage extends Activity {
             return count;
     }
 
+    //Returns how many appointments are left this month
     private int countMonthAppointments()
     {
         int count = 0;

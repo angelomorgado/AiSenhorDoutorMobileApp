@@ -50,6 +50,8 @@ public class MainActivity extends Activity {
         title = findViewById(R.id.welcomeText);
         registration = findViewById(R.id.register);
 
+
+        //App cover animation using the class Animation
         Handler h =new Handler() ;
         h.postDelayed(() -> {
             Animation animation = new TranslateAnimation(0, 0,0, -10000);
@@ -66,6 +68,7 @@ public class MainActivity extends Activity {
             registration.setVisibility(View.VISIBLE);
         }, 2500);
 
+        //Checks if the credentials are ok and if they are sends the user to the home page
         confirmation.setOnClickListener(
                 oView -> {
                     userIn = false;
@@ -96,6 +99,7 @@ public class MainActivity extends Activity {
         );
     }
 
+    //Leaves the app
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
